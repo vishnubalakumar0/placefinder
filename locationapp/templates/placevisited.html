@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="containers">
+    <h2>Enter place visited </h2>
+    <form method="post" action="{% url 'visit' %}">
+        {% csrf_token %}
+        <label>Category</label><br>
+        <select name="cname">
+            {% for i in cate %}
+            <option>{{i.categoryname}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label>Place</label><br>
+        <select name="pname">
+            {% for i in pla %}
+            <option>{{i.place_name}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label>Shop</label><br>
+        <select name="sname">
+            {% for i in shop %}
+            <option>{{i.shop_name}}</option>
+            {% endfor %}
+        </select><br><br>
+        <label>Time</label><br>
+        <input type="time" name="time" placeholder="Time" required><br><br>
+        <label>purpose</label><br>
+        <input type="text" name="pur" placeholder="Purpose" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:rgba(248, 241, 241, 0.6);
+            padding:20px;
+            background-size:cover;
+        }
+        .container{
+            max-width:90%;
+            margin:0 auto;
+            padding:30px;
+            border-radius:12px;
+        }
+        button{
+            background-color:#FF5581; 
+            border-radius: 5px;
+            width:10%;
+            height:30px;
+            border:none;
+            color:white;
+            font-size: 12px;
+        }
+        button:hover{
+            background-color: #e03f6a;
+        }
+        label{
+            color:#FF5581; 
+            font-weight: bold;
+            font-size: 18px;
+        }
+        select,input{
+            width:40%;
+            height:35px;
+            background-color: #f2f2f2;
+            border: none;
+            border-radius: 5px;
+        }
+        h2{
+            text-align: center;
+            color:#333;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+        table{
+            width:100%;
+            padding:10px 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        th{
+            background-color: #FF5581;
+            font-weight: bold;
+            color:white;
+            font-size: 14px;
+        }
+        td{
+            padding:12px 15px;
+            border:1px solid rgba(255,255,255,0.2);
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+
+        }
+        tr:hover{
+            background-color: #e0f7fa;
+
+        }
+    </style>
+    <div class="container">
+    <h2>Place vistied history</h2>
+<table>
+    <th>User</th>
+    <th>Time</th>
+    <th>Category</th>
+    <th>Place</th>
+    <th>Purpose</th>
+    <th>Shop</th>
+    {% if place_visits %}
+    {% for i in place_visits %}
+    <tr>
+    <td>{{i.user}}</td>
+    <td>{{i.time}}</td>
+    <td>{{i.category}}</td>
+    <td>{{i.place}}</td>
+    <td>{{i.purpose}}</td>
+    <td>{{i.shop}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td colspan="7" class="no-data">No place visits recorderd yet.</td>
+    </tr>
+    {% endif %}
+</table>
+</div>
+</body>
+</html>
