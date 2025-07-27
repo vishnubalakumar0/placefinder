@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>   
+    <body>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background: #1a1a1a;
+                color:#fff;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                height:100vh;
+                flex-direction: column;
+            }
+            button{
+                background-color:  #FF5581;
+                color:white;
+                border:none;
+                padding:15px 25px;
+                font-size: 18px;
+                border-radius:50px;
+                cursor:pointer;    
+            }
+            button:hover{
+                background-color:crimson;
+            }
+            #output{
+                margin-top: 20px;
+                font-size: 20px;
+            }
+        </style>
+        <button id="voice-btn">Tap to speak</button>
+        <p id="output">Waitng for input</p>
+        <script>
+             document.getElementById("voice-btn").addEventListener('click',function(){
+                const output = document.getElementById("output");
+
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (!SpeechRecognition){
+                output.innerText = "speech recognition not supported in this browser";
+                return;
+             }
+             const recognition = new SpeechRecognition();
+                recognition.lang ="en-US";
+                recognition.innerimResults = false;
+                recognition.maxAlternatives = 1 ;
+
+                output.innerText = "Listening..";
+
+                recognition.onresult = function(event)  {
+                    let transcript = event.results[0][0].transcript.trim().toLowerCase();
+                    console.log("Raw transcript:",transcript)
+                    let words = transcript.split(" ");
+                    let mid = Math.floor(words,length/2);
+                    let first = words.slice(0,mid).join(" ");
+                    let second = words.slice(mid).join(" ");
+                    if (first == second){
+                        transcript = first;
+                        console.log("cleaned repeated phrase:",transcript);
+                    }
+                    output.innerText = `you said: "${transcript}" `;
+
+                    console.log("Transcript:",transcript);
+                    const match = transcript.match(/find\s+(\w+)\s+in\s+([a-zA-Z\s]+)/i);
+
+                    if(match && match==length>=3){
+                        const categoryname = match[1].trim();
+                        const place_name= match[2].trim();
+                        console.log("category:",categoryname);
+                        console.log("place:",place_name);
+                        const redirectUrl =`/search?categoryname=${encodeURIComponent(categoryname)}&place_name=${encodeURIComponent(place_name)}`;
+                        console.log("redirecting to:",redirectUrl);
+                        window.location.href = redirectUrl;
+                    }else{
+                        output.innerText="trying:find out your results";
+                        console.warn("no regex match:",transcript)
+                    }
+            };
+            recognition.onerror= function(event){
+                output.innerText =`error:${event.error}`;
+            };
+            recognition.start();
+        });
+        </script>
+</body>
+</html>
