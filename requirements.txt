@@ -1,0 +1,13 @@
+# ✅ Django Core
+Django==5.2.4
+
+# ✅ Production & Deployment
+gunicorn==23.0.0
+whitenoise==6.9.0
+dj-database-url==3.0.1
+psycopg2-binary==2.9.10
+python-decouple==3.8
+
+# ✅ Utility
+pillow==11.1.0              # For handling images/media
+requests==2.32.3            # For API calls (e.g. maps, IP location)
