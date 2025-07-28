@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 {% load static %}
-<<<<<<< HEAD
-=======
-<!-- Coding By CodingNepal - www.codingnepalweb.com -->
->>>>>>> 870dc8b787a32df3c573042088f500b078f8ccfb
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
   <title>Login Form</title>
   <link rel="stylesheet" href="{% static 'adminstyle/style.css' %}">
   <style>
-    /* Gradient Background with smooth blend */
     body {
       margin: 0;
       padding: 0;
@@ -20,11 +14,10 @@
       background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #ffecd2, #fcb69f);
       background-size: 400% 400%;
       animation: gradientBG 20s ease infinite;
-      position: relative;
-      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     @keyframes gradientBG {
@@ -33,7 +26,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Star animation */
     .star {
       position: absolute;
       background: white;
@@ -113,7 +105,8 @@
   </style>
 </head>
 <body>
-  <!-- Stars JS -->
+
+  <!-- Stars -->
   <script>
     function createStar() {
       const star = document.createElement('div');
@@ -139,18 +132,6 @@
       <h2>Login</h2>
       <div class="input-field">
         <input type="text" name="usname" required>
-=======
-  <title>Glassmorphism Login Form | CodingNepal</title>
-  <link rel="stylesheet" href="{% static 'adminstyle\style.css' %}">
-</head>
-<body>
-  <div class="wrapper">
-    <form action="" method="post">
-      {% csrf_token %}
-      <h2>Login</h2>
-        <div class="input-field">
-        <input type="text"  name="usname"required>
->>>>>>> 870dc8b787a32df3c573042088f500b078f8ccfb
         <label>Enter your user name</label>
       </div>
       <div class="input-field">
@@ -158,32 +139,14 @@
         <label>Enter your password</label>
       </div>
       <div class="forget">
-<<<<<<< HEAD
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
+        <label><input type="checkbox"> Remember me</label>
         <a href="{% url 'forgot' %}" style="color: #fff;">Forgot password?</a>
       </div>
       <button type="submit">Log In</button>
       <div class="register">
         <p>Don't have an account? <a href="{% url 'register' %}" style="color: #fff;">Register</a></p>
-=======
-        <label for="remember">
-          <input type="checkbox" id="remember">
-          <p>Remember me</p>
-        </label>
-        <a href="{% url 'forgot' %}">Forgot password?</a>
-      </div>
-      <button type="submit">Log In</button>
-      <div class="register">
-        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
->>>>>>> 870dc8b787a32df3c573042088f500b078f8ccfb
       </div>
     </form>
   </div>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 870dc8b787a32df3c573042088f500b078f8ccfb
