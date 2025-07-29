@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-umnm*)h&)bnl&hz-12kt%jv&^y6@&p3v@^l9xf_zme$mx%vtgb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['placefinder-exca.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['vishnu15.me', 'www.vishnu15.me', 'placefinder-exca.onrender.com']
 
 
 
