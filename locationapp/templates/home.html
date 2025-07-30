@@ -30,29 +30,37 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header Section Begin -->
     <header class="header-section">
-        <div class="container-fluid">
-            <div class="logo">
-                <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
-            </div>
-            <nav class="main-menu mobile-menu">
-                <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="{% url 'visit' %}">Activity History</a></li>
-                    <li><a href="listings.html">More Cities</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                {% if user.is_authenticated %}
-<li class="nav-item dropdown" style="position: relative;">
-  <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown()" style="cursor: pointer;">
-    {{ user.username }} ⏷
-  </a>
-  <ul id="userDropdown" style="display: none; position: absolute; background: white; list-style: none; padding: 10px 15px; right: 0; top: 100%; border: 1px solid #ccc; z-index: 999;">
-<li><a href="{% url 'password_reset' %}">Reset Password</a></li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-  </ul>
-</li>
+    <div class="container-fluid">
+        <div class="logo">
+            <a href="./index.html">
+                <img src="{% static 'home/img/logo.png' %}" alt="">
+            </a>
+        </div>
+
+        <nav class="main-menu mobile-menu">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="{% url 'visit' %}">Activity History</a></li>
+                <li><a href="listings.html">More Cities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            {% if user.is_authenticated %}
+                <!-- ✅ Move this INTO the <ul> to align properly -->
+                <li class="nav-item dropdown" style="position: relative;">
+                    <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown()" style="cursor: pointer;">
+                        {{ user.username }} ⏷
+                    </a>
+                    <ul id="userDropdown" style="display: none; position: absolute; background: white; list-style: none; padding: 10px 15px; right: 0; top: 100%; border: 1px solid #ccc; z-index: 999;">
+                        <li><a href="{% url 'password_reset' %}">Reset Password</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
 
 <script>
   function toggleDropdown() {
