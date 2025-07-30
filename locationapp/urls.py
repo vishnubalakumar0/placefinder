@@ -14,5 +14,5 @@ urlpatterns = [
     path('forgot/', views.forgot, name="forgot"),
     path('reset-password/<uidb64>/<token>/', views.reset, name="reset"),
     path('api/reset-password/<uidb64>/<token>/', views.reset_password, name="reset-password"),
-    path('loew(next_page='/homepage/'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/homepage/'), name='logout'),
 ]
