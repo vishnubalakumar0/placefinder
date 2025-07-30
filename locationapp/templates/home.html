@@ -43,6 +43,34 @@
                     <li><a href="listings.html">More Cities</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
+                {% if user.is_authenticated %}
+<li class="nav-item dropdown" style="position: relative;">
+  <a href="#" class="nav-link dropdown-toggle" onclick="toggleDropdown()" style="cursor: pointer;">
+    {{ user.username }} ⏷
+  </a>
+  <ul id="userDropdown" style="display: none; position: absolute; background: white; list-style: none; padding: 10px 15px; right: 0; top: 100%; border: 1px solid #ccc; z-index: 999;">
+    <li><a href="{% url 'password_reset' %}">Reset Password</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+  </ul>
+</li>
+
+<script>
+  function toggleDropdown() {
+    const dropdown = document.getElementById("userDropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  }
+
+  window.addEventListener("click", function(e) {
+    const link = document.querySelector(".dropdown-toggle");
+    const dropdown = document.getElementById("userDropdown");
+
+    if (!link.contains(e.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+{% endif %}
+
                 </div>
             </nav>
             <div class="header-right">
