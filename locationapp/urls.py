@@ -4,6 +4,7 @@ from .views import forgot_password, reset_password
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('', views.homepage, name="home"),
     path('homepage/', views.homepage, name="home-page"),
     path('register/', views.register, name="register"),
     path('shop/<int:shop_id>/map/', views.shop_map, name="shop_map"),
