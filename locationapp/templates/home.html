@@ -30,49 +30,32 @@
         <div class="loader"></div>
     </div>
 
-<header class="header-section">
-    <div class="container-fluid">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'home/img/logo.png' %}" alt="">
-            </a>
-        </div>
-
-        <nav class="main-menu mobile-menu">
-            <ul>
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'visit' %}">Activity History</a></li>
-                <li><a href="{% url 'listings' %}">More Cities</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="userDropdownToggle">
-                        {{ user.username }} ⏷
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'password_change' %}">Change Password</a></li>
-                        <li><a href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li><a href="{% url 'login' %}" class="login-btn">Login</a></li>
-                <li><a href="{% url 'signup' %}" class="signup-btn">Sign Up</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-
-        <div class="header-right">
-            <div class="user-access">
-                {% if not user.is_authenticated %}
-                    <!-- Show only when logged out -->
-                {% endif %}
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="logo">
+                <a href="./index.html"><img src="{% static 'home/img/logo.png' %}" alt=""></a>
             </div>
-            <a href="{% url 'speech_result' %}" class="primary-btn">Add Listing</a>
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="{% url 'visit' %}">Activity History</a></li>
+                    <li><a href="listings.html">More Cities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                </div>
+            </nav>
+            <div class="header-right">
+                <div class="user-access">
+                    <!--<a href="#">Register/</a>
+                    <a href="#">Login</a>-->
+                </div>
+                <a href="{% url 'speech_result' %}" class="primary-btn">Add Listing</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
         </div>
-    </div>
-</header>
+    </header>
+    <!-- Header End -->
 
     <!-- Hero Section Begin -->
     <section class="hero-section set-bg" data-setbg="{% static 'home/img/hero-bg.jpg' %}">
