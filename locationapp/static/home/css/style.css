@@ -2557,3 +2557,56 @@ ol {
 		margin-left: 0;
 	}
 }
+/* Dropdown Menu Styling */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 4px;
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+}
+
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Login/Signup button styling */
+.login-btn {
+    color: #333;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.signup-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
